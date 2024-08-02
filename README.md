@@ -22,9 +22,9 @@ This is a sample project that uses the Groq API to generate responses based on u
    git clone https://github.com/omji74/edgechains-sample.git
    cd edgechain-sample
 
- #### for backend start ->
- ## 1. npm install
- ## 2. node index.js
- #### for frontend  ->
- ## 1. npm install
- ## 2. npm start
+ ### for backend start ->
+ ###### 1. npm install
+ ###### 2. node index.js
+ ### for frontend  ->
+ ###### 1. npm install
+ ###### 2. npm start
