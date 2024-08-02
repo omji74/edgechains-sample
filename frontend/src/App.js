@@ -56,6 +56,11 @@ function App() {
   const togglePromptDisplay = () => {
     setShowFullPrompt(!showFullPrompt);
   };
+  const formatResponse = (text) => {
+    return text.split('\n').map((str, index) => (
+      <p key={index} className="response-paragraph">{str}</p>
+    ));
+  };
 
   return (
     <div className="App">
@@ -83,7 +88,10 @@ function App() {
               )}
             </p>
             <hr />
-            <p>{response.completion}</p>
+            <div className="response-content">
+              {formatResponse(response.completion)}
+            </div>
+            {/* <p>{response.completion}</p> */}
           </div>
         )}
       </header>
