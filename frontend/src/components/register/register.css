@@ -8,6 +8,7 @@
     padding: 1rem;
     align-items: center;
     text-align: center;
+    margin: 0 auto; /* Center the login card horizontally */
 }
 
 .register > input {
