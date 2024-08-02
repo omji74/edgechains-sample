@@ -1,0 +1,94 @@
+// import React,{useState} from "react";
+// import axios from 'axios';
+// import './App.css';
+
+// function App(){
+//   const [prompt,setPrompt] = useState('');
+//   const [response,setResponse] = useState(null);
+//   const handleSubmit = async (e)=>{
+//     e.preventDefault();
+//     try{
+//       const res =  await axios.post('http://localhost:5000/api/generate',{prompt});
+//       setResponse(res.data);
+//       setPrompt('');
+//     }
+//     catch(err)
+//     {
+//       console.log("Error generate response",err);
+
+//     }
+//   };
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <h1>Groq Edgechain Sample Project</h1>
+//         <form onSubmit={handleSubmit}>
+//           <input type="text" value={prompt} onChange={(e)=>setPrompt(e.target.value)} placeholder="What you want to search from Groq " required/>
+//           <button  type="submit">Submit</button>
+//         </form>
+//         {response && (<div className="card"><h2>Your Query : {response.prompt}</h2> <hr></hr> <p>{response.completion}</p></div>)}
+//       </header>
+//     </div>
+//   )
+// }
+
+// export default App;
+import React, { useState } from "react";
+import axios from 'axios';
+import './App.css';
+
+function App() {
+  const [prompt, setPrompt] = useState('');
+  const [response, setResponse] = useState(null);
+  const [showFullPrompt, setShowFullPrompt] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:5000/api/generate', { prompt });
+      setResponse(res.data);
+      setPrompt('');
+    } catch (err) {
+      console.log("Error generating response", err);
+    }
+  };
+
+  const togglePromptDisplay = () => {
+    setShowFullPrompt(!showFullPrompt);
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Groq Edgechain Sample Project</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            placeholder="What you want to search from Groq"
+            required
+          />
+          <button type="submit">Submit</button>
+        </form>
+        {response && (
+          <div className="card">
+            <h2>Your Query:</h2>
+            <p>
+              {showFullPrompt ? response.prompt : `${response.prompt.substring(0, 100)}...`}
+              {response.prompt.length > 100 && (
+                <button onClick={togglePromptDisplay}>
+                  {showFullPrompt ? 'Read Less' : 'Read More'}
+                </button>
+              )}
+            </p>
+            <hr />
+            <p>{response.completion}</p>
+          </div>
+        )}
+      </header>
+    </div>
+  );
+}
+
+export default App;
