@@ -1,38 +1,3 @@
-// import React,{useState} from "react";
-// import axios from 'axios';
-// import './App.css';
-
-// function App(){
-//   const [prompt,setPrompt] = useState('');
-//   const [response,setResponse] = useState(null);
-//   const handleSubmit = async (e)=>{
-//     e.preventDefault();
-//     try{
-//       const res =  await axios.post('http://localhost:5000/api/generate',{prompt});
-//       setResponse(res.data);
-//       setPrompt('');
-//     }
-//     catch(err)
-//     {
-//       console.log("Error generate response",err);
-
-//     }
-//   };
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <h1>Groq Edgechain Sample Project</h1>
-//         <form onSubmit={handleSubmit}>
-//           <input type="text" value={prompt} onChange={(e)=>setPrompt(e.target.value)} placeholder="What you want to search from Groq " required/>
-//           <button  type="submit">Submit</button>
-//         </form>
-//         {response && (<div className="card"><h2>Your Query : {response.prompt}</h2> <hr></hr> <p>{response.completion}</p></div>)}
-//       </header>
-//     </div>
-//   )
-// }
-
-// export default App;
 import React, { useState } from "react";
 import axios from 'axios';
 import './App.css';
